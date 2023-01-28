@@ -1,0 +1,27 @@
+- Uruchomilem polecenie "PS C:\Users\user> Set-ExecutionPolicy Bypass" z uprawnieniami administratora i potwierdzilem "Y".
+- W celu uzyskania pomocy uzylem skladni "Get-Help Get-ExecutionPolicy"
+- Przykłady użycia "Get-Help Get-ExecutionPolicy -Examples"
+- Na liscie pojawily sie wszystkie dostepne moduly "Get-Module -ListAvailable"
+- Do szukania modulow, ktorych wersja jest wieksza lub rowna 2.0 bez pozostalych uzylem polecenia "Where-Object" lub jego skrótu "?"
+- W celu wyswietlenia jedynie moduly ktorych wersja jest >= 2.0.0.0 uzylem komendy "Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"}"
+- Poniższa linia wyświetli wszystkie polecenia (cmdlet - "Komandlety") w dostępnych modułach, których wersja >= 2.0.0.0
+Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"} | % {Get-Command -Module $_.Name}
+Wyświetlanie wszystkich, które mają w nazwie "Add-" lub "Get-"
+Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"} | % {Get-Command -Module $_.Name} | ? {($_.Name -like "Add-*") -or ($_.Name -like "Get-*")}
+- Wypisanie jej w postaci tabelki graficznej otworzonej w nowym okienku zrobilem poleceniem
+Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"} | % {Get-Command -Module $_.Name} | ? {($_.Name -like "Add-*") -or ($_.Name -like "Get-*")} | Out-GridView
+- Do pliku poleceniem:
+$nazwaPliku = "mojaNazwaPliku.txt"
+Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"} | % {Get-Command -Module $_.Name} | ? {($_.Name -like "Add-*") -or ($_.Name -like "Get-*")} | Out-File $env:TEMP\$nazwaPliku
+- Albo moglem nic z tym nie robic, aby tylko by sie przetworzylo ale nie wypisywalo
+Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"} | % {Get-Command -Module $_.Name} | ? {($_.Name -like "Add-*") -or ($_.Name -like "Get-*")} | Out-Null
+- Zaladowalem modul BitsTransfer komenda: "Import-Module BitsTransfer"
+- Wylistowalem wszystkie komendy dostepne w tym module komenda "Get-Command -Module BitsTransfer"
+- Za pomoca komeny ls C:\ | %{Sleep -Milliseconds 250; return $_} | Format-Table wylistowalem wszystki pliki i katalogi z katalogu glownego ale z odstepem czasowym
+- Za pomoca komendy & C:\Windows\notepad.exe wlaczylem notatnik
+- Za pomoca Get-PSDrive jakie "dyski" sa dostepne w powershallu
+- Do rejestru wszedlem komenda cd hklm:\
+- Wykonujac komende cd .\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall dostalem sie do folderu unistall
+i za pomoca ls wyswietlilem zawartosc niechcac miec wszystkiego odinstalowanego pominalem nastepne komendy
+Notyfikacje zrobilem wlasna funkcja, a nastepnie wywolalem ja za pomoca komendy GiveMePopup -Text "Your cat has meowed!" -Title "Cat Error" -Icon Error
+otrzymalem powiadomienie "Your cat has meowed!"

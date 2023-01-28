@@ -54,3 +54,7 @@ Jest to okreslane jako ruch "podtrzymujacy aktywnosc" (keep alive).
 20.11.2022
 -----------
 Na zajeciach powtarzalem material na kolokwium.
+
+28.11.2023
+-----------
+Uzupelnilem zadania z zajec dotyczacych PowerShell.
